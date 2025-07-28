@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   Menu, 
   X, 
@@ -54,6 +54,7 @@ function App() {
                 <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">About</button>
                 <button onClick={() => scrollToSection('products')} className="text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">Products</button>
                 <button onClick={() => scrollToSection('strengths')} className="text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">Strengths</button>
+                <button onClick={() => scrollToSection('partners')} className="text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200">Partners</button>
                 <button onClick={() => scrollToSection('contact')} className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">Contact</button>
               </div>
             </div>
@@ -74,6 +75,7 @@ function App() {
               <button onClick={() => scrollToSection('about')} className="block text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all">About</button>
               <button onClick={() => scrollToSection('products')} className="block text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all">Products</button>
               <button onClick={() => scrollToSection('strengths')} className="block text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all">Strengths</button>
+              <button onClick={() => scrollToSection('partners')} className="block text-gray-600 hover:text-blue-700 hover:bg-blue-50 px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all">Partners</button>
               <button onClick={() => scrollToSection('contact')} className="block bg-blue-700 hover:bg-blue-800 text-white px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all">Contact</button>
             </div>
           </div>
@@ -81,52 +83,47 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="src/images/image.png" 
+            alt="Electrical background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-blue-700/80"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
+        
+        {/* Centered Content */}
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mr-6 shadow-2xl">
+              <Zap className="w-12 h-12 text-blue-700" />
+            </div>
             <div>
-              <div className="flex items-center mb-8">
-                <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mr-6 shadow-2xl">
-                  <Zap className="w-10 h-10 text-blue-700" />
-                </div>
-                <div>
-                  <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">A S ENTERPRISES</h1>
-                  <p className="text-xl md:text-2xl text-blue-200 mt-3 font-medium">Electrical Accessories | Wires • Cables • Kits • Fittings</p>
-                </div>
-              </div>
-              
-              <p className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed font-light">
-                Your trusted supplier of high-quality electrical solutions, specializing in cable wires, jointing kits, and solar cables for diverse industries.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-6">
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-xl font-semibold text-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
-                >
-                  Get in Touch <ArrowRight className="w-5 h-5 ml-2" />
-                </button>
-                <button 
-                  onClick={() => scrollToSection('products')}
-                  className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-10 py-5 rounded-xl font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-2xl"
-                >
-                  Explore Products <ChevronRight className="w-5 h-5 ml-2" />
-                </button>
-              </div>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">A S ENTERPRISES</h1>
+              <p className="text-2xl md:text-3xl text-blue-200 mt-3 font-medium">Electrical Accessories | Wires • Cables • Kits • Fittings</p>
             </div>
-            
-            <div className="relative">
-              <div className="relative z-10 transform hover:scale-105 transition-transform duration-500">
-                <img 
-                  src="https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                  alt="Professional electrical installation and cables"
-                  className="rounded-3xl shadow-2xl"
-                />
-              </div>
-              <div className="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-red-600 to-red-700 rounded-3xl opacity-20"></div>
-              <div className="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl opacity-10"></div>
-            </div>
+          </div>
+          
+          <p className="text-2xl md:text-3xl text-blue-100 mb-12 leading-relaxed font-light max-w-3xl mx-auto">
+            Your trusted supplier of high-quality electrical solutions, specializing in cable wires, jointing kits, and solar cables for diverse industries.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-red-600 hover:bg-red-700 text-white px-12 py-6 rounded-xl font-semibold text-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+            >
+              Get in Touch <ArrowRight className="w-6 h-6 ml-3" />
+            </button>
+            <button 
+              onClick={() => scrollToSection('products')}
+              className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-12 py-6 rounded-xl font-semibold text-xl flex items-center justify-center transition-all duration-300 hover:shadow-2xl"
+            >
+              Explore Products <ChevronRight className="w-6 h-6 ml-3" />
+            </button>
           </div>
         </div>
       </section>
@@ -227,54 +224,46 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Zap className="w-8 h-8 text-blue-700" />
-              </div>
+              
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Cable Wires</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Copper and aluminum cables for low, medium, and high-voltage applications.</p>
               <img 
-                src="https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="src/images/cables.jpg" 
                 alt="High-quality electrical cables and wires"
-                className="w-full h-40 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-60     object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Shield className="w-8 h-8 text-red-600" />
-              </div>
+              
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Jointing Kits</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Heat shrink kits for power cable jointing and termination.</p>
               <img 
-                src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="src/images/joiningkit.jpg" 
                 alt="Professional electrical jointing and termination kits"
-                className="w-full h-40 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Star className="w-8 h-8 text-yellow-600" />
-              </div>
+              
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Solar Cables</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">UV-resistant, flexible cables compliant with IEC standards for efficient solar installations.</p>
               <img 
-                src="https://images.pexels.com/photos/9875414/pexels-photo-9875414.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="src/images/solarcables.webp" 
                 alt="Solar cable installation and renewable energy systems"
-                className="w-full h-40 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Users className="w-8 h-8 text-green-600" />
-              </div>
+              
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Other Products</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Switch sockets, lugs, thimbles, and glands.</p>
               <img 
-                src="https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="src/images/otherProducts.webp" 
                 alt="Electrical fittings, switches, and accessories"
-                className="w-full h-40 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
           </div>
@@ -341,6 +330,164 @@ function App() {
             </div>
             <h3 className="text-3xl font-bold mb-4">Pan-India Coverage</h3>
             <p className="text-blue-200 text-lg leading-relaxed max-w-md">Trusted by leading companies nationwide for reliable electrical connectivity solutions</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Partners - Electronics Companies */}
+      <section id="partners" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-blue-700 font-semibold text-lg tracking-wide uppercase">Trusted Partners</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Leading Electronics Companies</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">We partner with world-renowned manufacturers to deliver premium electrical accessories and solutions</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+            {/* Havells */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-blue-700">H</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Havells</h3>
+              <p className="text-sm text-gray-600">Switches & Sockets</p>
+            </div>
+
+            {/* Legrand */}
+            <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-red-700">L</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Legrand</h3>
+              <p className="text-sm text-gray-600">Electrical Solutions</p>
+            </div>
+
+            {/* Schneider Electric */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-green-700">S</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Schneider</h3>
+              <p className="text-sm text-gray-600">Power Management</p>
+            </div>
+
+            {/* Siemens */}
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-purple-700">S</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Siemens</h3>
+              <p className="text-sm text-gray-600">Industrial Solutions</p>
+            </div>
+
+            {/* ABB */}
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-orange-700">A</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">ABB</h3>
+              <p className="text-sm text-gray-600">Power & Automation</p>
+            </div>
+
+            {/* Polycab */}
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-indigo-700">P</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Polycab</h3>
+              <p className="text-sm text-gray-600">Cables & Wires</p>
+            </div>
+
+            {/* Finolex */}
+            <div className="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-teal-700">F</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Finolex</h3>
+              <p className="text-sm text-gray-600">Electrical Cables</p>
+            </div>
+
+            {/* KEI */}
+            <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-pink-700">K</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">KEI</h3>
+              <p className="text-sm text-gray-600">Power Cables</p>
+            </div>
+
+            {/* Anchor */}
+            <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-yellow-700">A</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Anchor</h3>
+              <p className="text-sm text-gray-600">Electrical Accessories</p>
+            </div>
+
+            {/* Crompton */}
+            <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-cyan-700">C</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Crompton</h3>
+              <p className="text-sm text-gray-600">Electrical Products</p>
+            </div>
+
+            {/* Godrej */}
+            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-emerald-700">G</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Godrej</h3>
+              <p className="text-sm text-gray-600">Electrical Appliances</p>
+            </div>
+
+            {/* Orient Electric */}
+            <div className="bg-gradient-to-br from-rose-50 to-rose-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-rose-700">O</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Orient Electric</h3>
+              <p className="text-sm text-gray-600">Electrical Equipment</p>
+            </div>
+
+            {/* V-Guard */}
+            <div className="bg-gradient-to-br from-violet-50 to-violet-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-violet-700">V</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">V-Guard</h3>
+              <p className="text-sm text-gray-600">Voltage Stabilizers</p>
+            </div>
+
+            {/* Bajaj */}
+            <div className="bg-gradient-to-br from-sky-50 to-sky-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-sky-700">B</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Bajaj</h3>
+              <p className="text-sm text-gray-600">Electrical Products</p>
+            </div>
+
+            {/* Philips */}
+            <div className="bg-gradient-to-br from-lime-50 to-lime-100 p-6 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="text-2xl font-bold text-lime-700">P</div>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Philips</h3>
+              <p className="text-sm text-gray-600">Lighting Solutions</p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-600 mb-6">And many more trusted manufacturers...</p>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              Partner With Us
+            </button>
           </div>
         </div>
       </section>
