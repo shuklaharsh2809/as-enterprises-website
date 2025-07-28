@@ -15,6 +15,13 @@ import {
   CheckCircle
 } from 'lucide-react';
 
+// Import images properly for Vite
+import heroImage from './images/image.png';
+import cablesImage from './images/cables.jpg';
+import joiningKitImage from './images/joiningkit.jpg';
+import solarCablesImage from './images/solarcables.webp';
+import otherProductsImage from './images/otherProducts.webp';
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -87,7 +94,7 @@ function App() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="src/images/image.png" 
+            src={heroImage} 
             alt="Electrical background"
             className="w-full h-full object-cover"
           />
@@ -228,7 +235,7 @@ function App() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Cable Wires</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Copper and aluminum cables for low, medium, and high-voltage applications.</p>
               <img 
-                src="src/images/cables.jpg" 
+                src={cablesImage} 
                 alt="High-quality electrical cables and wires"
                 className="w-full h-60     object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
@@ -239,7 +246,7 @@ function App() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Jointing Kits</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Heat shrink kits for power cable jointing and termination.</p>
               <img 
-                src="src/images/joiningkit.jpg" 
+                src={joiningKitImage} 
                 alt="Professional electrical jointing and termination kits"
                 className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
@@ -250,7 +257,7 @@ function App() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Solar Cables</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">UV-resistant, flexible cables compliant with IEC standards for efficient solar installations.</p>
               <img 
-                src="src/images/solarcables.webp" 
+                src={solarCablesImage} 
                 alt="Solar cable installation and renewable energy systems"
                 className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
@@ -261,7 +268,8 @@ function App() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Other Products</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">Switch sockets, lugs, thimbles, and glands.</p>
               <img 
-                src="src/images/otherProducts.webp" 
+                src={otherProductsImage} 
+                
                 alt="Electrical fittings, switches, and accessories"
                 className="w-full h-60 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
               />
