@@ -85,6 +85,7 @@ const Section = ({ children, id }: { children: React.ReactNode, id: string }) =>
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ from_name: '', from_email: '', message: '' });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -93,6 +94,7 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     emailjs.send(
       'service_h4lxe5z', 
@@ -105,6 +107,7 @@ function App() {
           // alert('Enquiry sent successfully!');
           toast.success('Enquiry sent successfully!');
           setFormData({ from_name: '', from_email: '', message: '' });
+          setLoading(false);
       }, (error) => {
           console.log('FAILED...', error);
           // alert('Failed to send enquiry. Please try again later.');
@@ -540,14 +543,25 @@ function App() {
                   </div>
                 </div>
                 <div className="text-center mt-8">
+                  {loading ? (
+                   <motion.button 
+                   whileHover={{ scale: 1.05 }}
+                   whileTap={{ scale: 0.95 }}
+                   type="submit"
+                   className="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full sm:w-auto"
+                   >
+                     Sending...
+                   </motion.button>
+                  ) : (
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
                     className="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl w-full sm:w-auto"
-                  >
-                    Send Enquiry
-                  </motion.button>
+                    >
+                      Send Enquiry
+                    </motion.button>
+                  )}
                 </div>
               </motion.form>
             </div>
